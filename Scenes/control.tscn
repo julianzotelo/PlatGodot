@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3d4154q2s6df"]
+
+[ext_resource type="Texture2D" uid="uid://bn15sh1kr6sg0" path="res://Assets/Fondo.png" id="1_nnjxl"]
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_uvm8d"]
+[ext_resource type="Texture2D" uid="uid://b5cytv2ncaip" path="res://Assets/Boton Play.png" id="2_kurmb"]
+[ext_resource type="Texture2D" uid="uid://dcnjrglgd8y1v" path="res://Assets/Boton Exit.png" id="3_wv27l"]
+[ext_resource type="PackedScene" uid="uid://bfbb08rin5ari" path="res://Scenes/player.tscn" id="5_xuo83"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uvm8d")
+
+[node name="Fondo" type="Sprite2D" parent="."]
+position = Vector2(578, 323)
+scale = Vector2(0.903125, 0.897222)
+texture = ExtResource("1_nnjxl")
+
+[node name="Play" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 201.0
+offset_right = 1094.0
+offset_bottom = 292.0
+
+[node name="BotonPlay" type="Sprite2D" parent="Play"]
+position = Vector2(149, 49.8125)
+scale = Vector2(0.556098, 0.722123)
+texture = ExtResource("2_kurmb")
+
+[node name="Exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 311.0
+offset_right = 1099.0
+offset_bottom = 406.0
+
+[node name="BotonExit" type="Sprite2D" parent="Exit"]
+position = Vector2(161.75, 48.625)
+scale = Vector2(0.564006, 0.751667)
+texture = ExtResource("3_wv27l")
+
+[node name="Player" parent="." instance=ExtResource("5_xuo83")]
+position = Vector2(128, 74)
+speed = 500.0
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
