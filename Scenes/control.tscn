@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3d4154q2s6df"]
+[gd_scene load_steps=7 format=3 uid="uid://d3d4154q2s6df"]
 
 [ext_resource type="Texture2D" uid="uid://bn15sh1kr6sg0" path="res://Assets/Fondo.png" id="1_nnjxl"]
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_uvm8d"]
 [ext_resource type="Texture2D" uid="uid://b5cytv2ncaip" path="res://Assets/Boton Play.png" id="2_kurmb"]
 [ext_resource type="Texture2D" uid="uid://dcnjrglgd8y1v" path="res://Assets/Boton Exit.png" id="3_wv27l"]
 [ext_resource type="PackedScene" uid="uid://bfbb08rin5ari" path="res://Scenes/player.tscn" id="5_xuo83"]
+[ext_resource type="Texture2D" uid="uid://01vvt422a4es" path="res://Scenes/ninja enenao.png" id="6_qfdg2"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -47,6 +48,11 @@ texture = ExtResource("3_wv27l")
 [node name="Player" parent="." instance=ExtResource("5_xuo83")]
 position = Vector2(128, 74)
 speed = 500.0
+
+[node name="NinjaEnenao" type="Sprite2D" parent="."]
+position = Vector2(336, 471)
+scale = Vector2(0.475207, 0.407514)
+texture = ExtResource("6_qfdg2")
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
