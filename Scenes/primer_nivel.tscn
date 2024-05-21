@@ -5472,6 +5472,9 @@ size = Vector2(1573.53, 961.852)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmcin"]
 size = Vector2(396.733, 846.429)
 
+[sub_resource type="Animation" id="Animation_k6cgn"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_2gfd4"]
 resource_name = "camera"
 tracks/0/type = "value"
@@ -5486,9 +5489,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(4, 4)]
 }
-
-[sub_resource type="Animation" id="Animation_k6cgn"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2enb3"]
 _data = {
