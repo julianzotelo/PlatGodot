@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1ciwg63o58vd"]
+[gd_scene load_steps=15 format=3 uid="uid://b1ciwg63o58vd"]
 
 [ext_resource type="PackedScene" uid="uid://bfbb08rin5ari" path="res://Scenes/player.tscn" id="1_fe3db"]
+[ext_resource type="Script" path="res://Scripts/primer_nivel.gd" id="1_rvlnx"]
 [ext_resource type="Texture2D" uid="uid://bke2qk06c2msu" path="res://Assets/a-dark-and-foreboding-illustration-of-a-mystical-g-fcLqZ7kVRFmvVx8TIF5vVg-i-2dRzS-QM6shXH_rV-z1g.jpeg" id="1_yyyot"]
 [ext_resource type="Texture2D" uid="uid://cxwod1tnud2jo" path="res://Assets/Tilset roca.png" id="2_wjwds"]
 [ext_resource type="Texture2D" uid="uid://cns0oyse2a0ba" path="res://Assets/puerta.png" id="3_cval6"]
@@ -5462,17 +5463,45 @@ texture = ExtResource("2_wjwds")
 46:33/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_les5a"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_s6yp6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj2ve"]
-size = Vector2(428.899, 834.589)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wwt6"]
+size = Vector2(1573.53, 961.852)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_n2efv"]
-a = Vector2(3016, 696)
-b = Vector2(2, 696)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmcin"]
+size = Vector2(396.733, 846.429)
+
+[sub_resource type="Animation" id="Animation_2gfd4"]
+resource_name = "camera"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_k6cgn"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2enb3"]
+_data = {
+"RESET": SubResource("Animation_k6cgn"),
+"camera": SubResource("Animation_2gfd4")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xde65"]
+size = Vector2(3001.5, 83)
 
 [node name="PrimerNivel" type="Node2D"]
+position = Vector2(3, 0)
+script = ExtResource("1_rvlnx")
 
 [node name="A-dark-and-foreboding-illustration-of-a-mystical-g-fcLqZ7kVrFmvVx8tif5vVg-i-2dRzS-qm6ShXhRV-z1g" type="Sprite2D" parent="."]
 position = Vector2(1500, -193)
@@ -5490,30 +5519,41 @@ position = Vector2(2959, 225)
 scale = Vector2(0.186523, 0.168945)
 texture = ExtResource("3_cval6")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Puerta"]
-position = Vector2(-0.00195313, 11.8381)
-shape = SubResource("RectangleShape2D_rj2ve")
-debug_color = Color(0.837887, 0.334371, 0.505867, 0.42)
+[node name="Area2D" type="Area2D" parent="Puerta"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta/Area2D"]
+position = Vector2(-574.996, -69.5492)
+shape = SubResource("RectangleShape2D_8wwt6")
+
+[node name="Area2D2" type="Area2D" parent="Puerta"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puerta/Area2D2"]
+position = Vector2(10.7227, -20.7168)
+shape = SubResource("RectangleShape2D_vmcin")
 
 [node name="Player" parent="." instance=ExtResource("1_fe3db")]
 position = Vector2(101, 360)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(478, -38)
+position = Vector2(10, -34)
+limit_left = 0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.41
-drag_top_margin = 0.26
-drag_right_margin = 0.55
+drag_top_margin = 0.51
+drag_right_margin = 0.32
 drag_bottom_margin = 0.13
 editor_draw_drag_margin = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("SegmentShape2D_n2efv")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_2enb3")
+}
 
 [node name="Coin" parent="." instance=ExtResource("5_446dj")]
-position = Vector2(1171, 79)
+light_mask = 13
+visibility_layer = 5
+position = Vector2(226, 327)
 
 [node name="Coin2" parent="." instance=ExtResource("5_446dj")]
 position = Vector2(1837, -242)
@@ -5522,4 +5562,35 @@ position = Vector2(1837, -242)
 position = Vector2(2275, 134)
 
 [node name="Coin4" parent="." instance=ExtResource("5_446dj")]
-position = Vector2(2348, -223)
+position = Vector2(2351, -190)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 46.0
+offset_top = 43.0
+offset_right = 107.0
+offset_bottom = 83.0
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Score "
+
+[node name="punto" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "0"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1496.25, 659)
+shape = SubResource("RectangleShape2D_xde65")
+
+[connection signal="body_entered" from="Puerta/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Puerta/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Puerta/Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

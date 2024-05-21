@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://01vvt422a4es"
-path="res://.godot/imported/ninja enenao.png-6ff3996978aac83084603c7bb4579b07.ctex"
+uid="uid://d1faqsbctm5uo"
+path="res://.godot/imported/PJ1.png-a08f9e5a5ad9813c29b726eaa7900610.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ninja enenao.png"
-dest_files=["res://.godot/imported/ninja enenao.png-6ff3996978aac83084603c7bb4579b07.ctex"]
+source_file="res://Assets/PJ1.png"
+dest_files=["res://.godot/imported/PJ1.png-a08f9e5a5ad9813c29b726eaa7900610.ctex"]
 
 [params]
 

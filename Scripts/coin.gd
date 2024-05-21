@@ -9,3 +9,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$Area2D/Sprite2D/AnimationPlayer.play("idle")
+
+
+
+func _on_area_2d_body_entered(body):
+	$".".queue_free()
+	Global.score= Global.score+1;
