@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=3 uid="uid://btir60vecl72e"]
+
+[ext_resource type="Script" path="res://Scripts/coin.gd" id="1_62jgr"]
+[ext_resource type="Texture2D" uid="uid://cqrkx8jnfc5ha" path="res://Assets/Coin.png" id="1_jv630"]
+[ext_resource type="Texture2D" uid="uid://duq7g4kj11byh" path="res://Assets/Coin3.png" id="2_1e8ua"]
+
+[sub_resource type="Animation" id="Animation_5gnxi"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_jv630"), ExtResource("2_1e8ua")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(23, 23), Vector2(27, 23), Vector2(27, 28), Vector2(27, 18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.11, 0.0962998), Vector2(0.11, 0.0962998)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 1.55334, 4.8014]
+}
+
+[sub_resource type="Animation" id="Animation_7sxbp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_jv630")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.11, 0.0962998)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.55334]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ordcv"]
+_data = {
+"RESET": SubResource("Animation_7sxbp"),
+"idle": SubResource("Animation_5gnxi")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfkwb"]
+radius = 32.0156
+
+[node name="Coin" type="Node2D"]
+position = Vector2(496, 260)
+script = ExtResource("1_62jgr")
+
+[node name="Area2D" type="Area2D" parent="."]
+disable_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(18, 16)
+rotation = 1.55334
+scale = Vector2(0.11, 0.0962998)
+texture = ExtResource("1_jv630")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_ordcv")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(26, 25)
+shape = SubResource("CircleShape2D_pfkwb")
+debug_color = Color(0.651633, 0.517995, 0.0788296, 0.42)

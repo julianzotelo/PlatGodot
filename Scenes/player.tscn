@@ -126,7 +126,6 @@ size = Vector2(28, 7)
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(74, 40)
 script = ExtResource("1_lhyc2")
-speed = 200.0
 
 [node name="PJ" type="Sprite2D" parent="."]
 position = Vector2(-6.93053, 1.78572)
@@ -134,7 +133,7 @@ scale = Vector2(0.180363, 0.169444)
 texture = ExtResource("2_baorn")
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PJ"]
+[node name="Anim" type="AnimationPlayer" parent="PJ"]
 reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_7boou")

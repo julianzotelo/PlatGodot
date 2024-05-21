@@ -47,7 +47,6 @@ texture = ExtResource("3_wv27l")
 
 [node name="Player" parent="." instance=ExtResource("5_xuo83")]
 position = Vector2(128, 74)
-speed = 500.0
 
 [node name="NinjaEnenao" type="Sprite2D" parent="."]
 position = Vector2(336, 471)
