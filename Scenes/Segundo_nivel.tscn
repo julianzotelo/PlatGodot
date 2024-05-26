@@ -1,13 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://8ixvp150wfd7"]
+[gd_scene load_steps=8 format=3 uid="uid://8ixvp150wfd7"]
 
+[ext_resource type="Script" path="res://Scripts/Segundo_nivel.gd" id="1_h78fi"]
 [ext_resource type="Texture2D" uid="uid://e31f0toxyabu" path="res://Assets/a-masterfully-crafted-epic-fantasy-background-for--jz6VnJPVSBeNEpirpcflKA-vONapCwkTBizC6HOYPTJYg.jpeg" id="1_m1cpd"]
 [ext_resource type="Texture2D" uid="uid://cftxenjdaqwor" path="res://Assets/Boton options.png" id="2_355u3"]
 [ext_resource type="PackedScene" uid="uid://bfbb08rin5ari" path="res://Scenes/player.tscn" id="2_lr4tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrw2g"]
-size = Vector2(2019, 20)
+size = Vector2(1087, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntcry"]
+size = Vector2(3001.5, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2avl"]
+size = Vector2(61, 1053)
 
 [node name="Nivel2" type="Node2D"]
+script = ExtResource("1_h78fi")
 
 [node name="Fondo" type="Sprite2D" parent="."]
 position = Vector2(1053, 94)
@@ -23,8 +31,34 @@ scale = Vector2(3.32947, 0.110063)
 texture = ExtResource("2_355u3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(999.5, 0)
+position = Vector2(533.5, 0)
 shape = SubResource("RectangleShape2D_wrw2g")
 
 [node name="Player" parent="." instance=ExtResource("2_lr4tx")]
 position = Vector2(137, 432)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_bottom = 610
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(137, 432)
+collision_layer = 0
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1352, 251)
+shape = SubResource("RectangleShape2D_ntcry")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-65, 183)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(40.5, 119)
+shape = SubResource("RectangleShape2D_o2avl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2/CollisionShape2D"]
+position = Vector2(2164.5, -184.5)
+shape = SubResource("RectangleShape2D_o2avl")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

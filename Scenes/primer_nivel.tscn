@@ -5539,9 +5539,9 @@ position = Vector2(10, -34)
 limit_left = 0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_left_margin = 0.41
-drag_top_margin = 0.51
-drag_right_margin = 0.32
+drag_left_margin = 0.44
+drag_top_margin = 0.49
+drag_right_margin = 0.21
 drag_bottom_margin = 0.13
 editor_draw_drag_margin = true
 
