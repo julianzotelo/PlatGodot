@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://chvrqmic5711v"]
+
+[ext_resource type="Texture2D" uid="uid://d1q2pavtrbroe" path="res://Assets/Bola de fuego.png" id="1_81yvl"]
+[ext_resource type="Script" path="res://Scripts/BolaDeFuego.gd" id="1_ehqh2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7kb82"]
+radius = 7.0
+height = 22.0
+
+[node name="Area2D" type="Area2D"]
+rotation = 1.5708
+script = ExtResource("1_ehqh2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.0499997, 0)
+scale = Vector2(0.0301515, 0.03)
+texture = ExtResource("1_81yvl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7kb82")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

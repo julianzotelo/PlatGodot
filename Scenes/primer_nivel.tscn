@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1ciwg63o58vd"]
+[gd_scene load_steps=17 format=3 uid="uid://b1ciwg63o58vd"]
 
 [ext_resource type="PackedScene" uid="uid://bfbb08rin5ari" path="res://Scenes/player.tscn" id="1_fe3db"]
 [ext_resource type="Script" path="res://Scripts/primer_nivel.gd" id="1_rvlnx"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cxwod1tnud2jo" path="res://Assets/Tilset roca.png" id="2_wjwds"]
 [ext_resource type="Texture2D" uid="uid://cns0oyse2a0ba" path="res://Assets/puerta.png" id="3_cval6"]
 [ext_resource type="PackedScene" uid="uid://btir60vecl72e" path="res://Scenes/coin.tscn" id="5_446dj"]
+[ext_resource type="PackedScene" uid="uid://dyb2dpd4g8tyr" path="res://Scenes/Mago.tscn" id="7_y40xg"]
+[ext_resource type="PackedScene" uid="uid://chvrqmic5711v" path="res://Scenes/BolaDeFuego.tscn" id="8_a1sn3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s6yp6"]
 texture = ExtResource("2_wjwds")
@@ -5589,6 +5591,12 @@ collision_mask = 255
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1496.25, 659)
 shape = SubResource("RectangleShape2D_xde65")
+
+[node name="Mago" parent="." instance=ExtResource("7_y40xg")]
+position = Vector2(786, 307)
+
+[node name="BolaDeFuego" parent="." instance=ExtResource("8_a1sn3")]
+position = Vector2(683, 284)
 
 [connection signal="body_entered" from="Puerta/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Puerta/Area2D" to="." method="_on_area_2d_body_exited"]

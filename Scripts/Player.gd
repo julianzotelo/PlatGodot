@@ -1,3 +1,4 @@
+class_name  Personaje
 extends CharacterBody2D
 
 
